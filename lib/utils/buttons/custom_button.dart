@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project_structure/utils/dimesions/dimensions.dart';
+import 'package:flutter_project_structure/utils/common/colors/colors.dart';
+import 'package:flutter_project_structure/utils/common/dimesions/dimensions.dart';
+
+import '../common/fonts/font_style.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;
@@ -10,16 +13,20 @@ class CustomButton extends StatelessWidget {
   final double borderRadius;
   final double? width;
   final double? height;
+    final String fontFamily;
+
 
   const CustomButton({
     Key? key,
     required this.text,
     required this.onPressed,
     this.icon,
-    this.backgroundColor = Colors.blue,
-    this.textColor = Colors.white,
+    this.backgroundColor = AppColors.background,
+    this.textColor = AppColors.primary,
     this.borderRadius = 12.0,
     this.width,
+        this.fontFamily = FontStyles.robotoBold,
+
     this.height,
   }) : super(key: key);
 
@@ -55,6 +62,7 @@ class CustomButton extends StatelessWidget {
               text,
               style: TextStyle(
                 fontSize: Dimensions.fontMedium,
+                fontFamily: fontFamily,
                 fontWeight: FontWeight.bold,
                 color: textColor,
               ),
