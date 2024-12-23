@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project_structure/constant/app_routes.dart';
 import 'package:flutter_project_structure/utils/buttons/custom_button.dart';
 import 'package:flutter_project_structure/utils/dimesions/dimensions.dart';
+import 'package:get/get.dart';
 
 
 void main() {
@@ -15,23 +17,9 @@ class MyApp extends StatelessWidget {
     return Builder(
       builder: (context) {
         Dimensions.init(context); 
-        return MaterialApp(
-          home: Scaffold(
-            appBar: AppBar(title: const Text('Responsive Custom Button Example')),
-            body: Center(
-              child: Padding(
-                padding: EdgeInsets.all(Dimensions.paddingMedium),
-                child: CustomButton(
-                  text: 'Responsive Button',
-                  icon: Icons.touch_app,
-                  onPressed: () {
-                    print('Button Pressed');
-                  },
-                  backgroundColor: Colors.teal,
-                ),
-              ),
-            ),
-          ),
+        return GetMaterialApp(
+          initialRoute: AppRoutes.mainScreen,
+          getPages: AppRoutes.routes,
         );
       },
     );
