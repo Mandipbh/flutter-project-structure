@@ -3,10 +3,9 @@ import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_project_structure/Networking/NetworkHelper/custom_exception.dart';
-import 'package:flutter_project_structure/constant/api_keys.dart';
-import 'package:flutter_project_structure/utils/mixin/progress_hub.dart';
-import 'package:flutter_project_structure/utils/mixin/toast_message.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter_project_structure/constants/api_keys.dart';
+import 'package:flutter_project_structure/utils/progress_hub.dart';
+import 'package:flutter_project_structure/utils/ui_helpers.dart';
 import 'package:get/get.dart';
 import 'package:path/path.dart';
 import 'package:http/http.dart' as http;
@@ -73,7 +72,7 @@ class ApiService {
           } else {
             var error = responseCodeHandle(contextApi, response).toString();
             log("--- Error : $error");
-            showToast(contextApi, error, Toast.LENGTH_SHORT);
+            showToast(error);
           }
           return null;
         }
@@ -81,14 +80,14 @@ class ApiService {
         return jsonDecode(multiPartResponse);
       }else{
         log("---!! somethingWentWrong !!---");
-        showToast(contextApi, "Something went wrong", Toast.LENGTH_SHORT);
+        showToast("Something went wrong");
         return null;
       }
     } on SocketException catch (_) {
       if (showLoader) {
         hideProgress(contextApi);
       }
-      showToast(contextApi, "Mobile data off", Toast.LENGTH_SHORT);
+      showToast("Mobile data off");
     } catch (e) {
       if (showLogs) {
         log("---Error : $e");

@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_project_structure/constant/app_images.dart';
+import 'package:flutter_project_structure/constants/app_images.dart';
 import 'package:flutter_project_structure/utils/common_controller/bottom_tab_bar_controller.dart';
 import 'package:get/get.dart';
 
